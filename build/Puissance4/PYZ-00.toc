@@ -1,0 +1,1 @@
+('C:\\Users\\Sam\\Desktop\\Puissance4\\build\\Puissance4\\PYZ-00.pyz', [])
