@@ -260,7 +260,7 @@ def afficher_jetton(nom, x, column):
 	''' Ajoute les jettons à une liste pour tous les afficher à chaque FRAME de la game '''
 	liste_jettons.append([nom, (x+8, (94)+109*(inverse_row(game.get_next_open_row(game.board, column))+1))])
 
-difficulty = 4 # Default difficulty
+difficulty = 5 # Default difficulty
 IA = ['Tabletop_red_turn', 'Red_to_play', 'Red_jetton'] # IA parameters
 player = ['Tabletop_blue_turn', 'Blue_to_play', 'Blue_jetton'] # Player parameters
 
@@ -291,14 +291,14 @@ def difficulty_level():
 		if medium_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('Medium', 1, (730, 614))
 			if click:
-				difficulty = 4
+				difficulty = 5
 				color_selection()
 				running = False
 
 		if hard_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('Hard', 1, (1281, 614))
 			if click:
-				difficulty = 5
+				difficulty = 7
 				color_selection()
 				running = False
 
