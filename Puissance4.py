@@ -2,8 +2,8 @@ import pygame, sys
 from pygame.locals import *
 from pygame import mixer
 import soundfile as sf
-mixer.init()
-pygame.mixer.set_num_channels(5)
+# mixer.init()
+# pygame.mixer.set_num_channels(5)
 pygame.init()
 
 # --- Window Settings ---
@@ -38,7 +38,7 @@ def intro_player(max):
 
 def intro():
 	global sprite_intro
-	play_sound('Open')
+	# play_sound('Open')
 	run = True
 	while run:
 		intro_player(77)
@@ -95,7 +95,7 @@ def title_screen():
 	''' MENU : Title screen menu '''
 	global play_b, options_b, quit_b, replay
 	running = True
-	play_music('Title_screen', 0.85, -1)
+	# play_music('Title_screen', 0.85, -1)
 	click, clicked = False, False
 	while running == True:
 		mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -112,7 +112,7 @@ def title_screen():
 		if play_button.collidepoint((mouse_x, mouse_y)):
 			play_b = 'Play_On'
 			if click:
-				play_sound('Accept')
+				# play_sound('Accept')
 				#play()
 				difficulty_level()
 				running = False
@@ -120,13 +120,13 @@ def title_screen():
 		if options_button.collidepoint((mouse_x, mouse_y)):
 			options_b = 'Options_On'
 			if click:
-				play_sound('Navigation')
+				# play_sound('Navigation')
 				options()
 
 		if quit_button.collidepoint((mouse_x, mouse_y)):
 			quit_b = 'Quit_On'
 			if click:
-				play_sound('Return')
+				# play_sound('Return')
 				pygame.quit()
 				sys.exit()
 				running = False
@@ -180,37 +180,37 @@ def options():
 
 		if return_button.collidepoint((mouse_x, mouse_y)):
 			if click:
-				play_sound('Navigation')
+				# play_sound('Navigation')
 				running = False
 		if musics_on_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('On_arrows', 1, (int(WIN_SIZE[0]/4 - musics_on_button_image.get_width()/2 - 120),586), '.png')
 			if click:
 				if musics_On_b == "Musics_On_Off":
 					musics_On_b, musics_Off_b, music_volume = "Musics_On_On", "Musics_Off_Off", True
-					mixer.music.set_volume(1)
-					play_sound('Navigation')
+					# mixer.music.set_volume(1)
+					# play_sound('Navigation')
 
 		if musics_off_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('Off_arrows', 1, (int(WIN_SIZE[0]/4 - musics_off_button_image.get_width()/2 - 109),681), '.png')
 			if click:
 				if musics_Off_b == "Musics_Off_Off":
 					musics_On_b, musics_Off_b, music_volume = "Musics_On_Off", "Musics_Off_On", False
-					mixer.music.set_volume(0)
-					play_sound('Navigation')
+					# mixer.music.set_volume(0)
+					# play_sound('Navigation')
 
 		if sounds_on_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('On_arrows', 1, (int(WIN_SIZE[0]/1.255 - sounds_on_button_image.get_width()/2 - 120),586), '.png')
 			if click:
 				if sounds_On_b == "Sounds_On_Off":
 					sounds_On_b, sounds_Off_b, sound_volume = "Sounds_On_On", "Sounds_Off_Off", True
-					play_sound('Navigation')
+					# play_sound('Navigation')
 
 		if sounds_off_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('Off_arrows', 1, (int(WIN_SIZE[0]/1.255 - musics_off_button_image.get_width()/2 - 109),681), '.png')
 			if click:
 				if sounds_Off_b == "Sounds_Off_Off":
 					sounds_On_b, sounds_Off_b, sound_volume = "Sounds_On_Off", "Sounds_Off_On", False
-					play_sound('Navigation')
+					# play_sound('Navigation')
 
 		if not clicked:
 			display_image_menu('Return', 1, (25,25), '.png')
@@ -260,7 +260,7 @@ def afficher_jetton(nom, x, column):
 	''' Ajoute les jettons à une liste pour tous les afficher à chaque FRAME de la game '''
 	liste_jettons.append([nom, (x+8, (94)+109*(inverse_row(game.get_next_open_row(game.board, column))+1))])
 
-difficulty = 4 # Default difficulty
+difficulty = 5 # Default difficulty
 IA = ['Tabletop_red_turn', 'Red_to_play', 'Red_jetton'] # IA parameters
 player = ['Tabletop_blue_turn', 'Blue_to_play', 'Blue_jetton'] # Player parameters
 
@@ -291,14 +291,14 @@ def difficulty_level():
 		if medium_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('Medium', 1, (730, 614))
 			if click:
-				difficulty = 4
+				difficulty = 5
 				color_selection()
 				running = False
 
 		if hard_button.collidepoint((mouse_x, mouse_y)):
 			display_image_menu('Hard', 1, (1281, 614))
 			if click:
-				difficulty = 5
+				difficulty = 7
 				color_selection()
 				running = False
 
@@ -338,9 +338,9 @@ def color_selection():
 			if click:
 				player = ['Tabletop_red_turn', 'Red_to_play', 'Red_jetton']
 				IA = ['Tabletop_blue_turn', 'Blue_to_play', 'Blue_jetton']
-				stop_music()
-				play_sound('Navigation')
-				play_music('Title_screen_2', 0.85, -1)
+				# stop_music()
+				# play_sound('Navigation')
+				# play_music('Title_screen_2', 0.85, -1)
 				running = False
 
 		if blue_button.collidepoint((mouse_x, mouse_y)):
@@ -348,9 +348,9 @@ def color_selection():
 			if click:
 				IA = ['Tabletop_red_turn', 'Red_to_play', 'Red_jetton']
 				player = ['Tabletop_blue_turn', 'Blue_to_play', 'Blue_jetton']
-				stop_music()
-				play_sound('Navigation')
-				play_music('Title_screen_2', 0.85, -1)
+				# stop_music()
+				# play_sound('Navigation')
+				# play_music('Title_screen_2', 0.85, -1)
 				running = False
 
 		click = False
@@ -474,9 +474,9 @@ def play():
 def end_game(sound, image):
 	''' Function du declare an END GAME '''
 	run = True
-	stop_music()
+	# stop_music()
 	start_ticks=pygame.time.get_ticks()
-	play_sound(sound)
+	# play_sound(sound)
 	while run:
 		seconds=(pygame.time.get_ticks()-start_ticks)/1000
 		display_image_menu('Tabletop', 1, (0,0), '.jpg')
